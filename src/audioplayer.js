@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
+
 function AudioPlayer() {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
@@ -55,9 +57,12 @@ function AudioPlayer() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center p-4">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center text-purple-800">
+        <h1 className="text-2xl font-bold text-center text-purple-800">
           Emotion Prediction
         </h1>
+        <p class="text-center text-gray-700 mb-4  dark:text-gray-400">
+            Upload an audio and start predicting
+            </p>
         <input
           type="file"
           onChange={handleFileChange}
