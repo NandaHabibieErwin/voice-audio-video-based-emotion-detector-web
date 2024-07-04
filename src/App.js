@@ -12,7 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="bg-slate-50">
       <Header />
       <div id="Home">
         <HeroSection />

@@ -3,14 +3,14 @@ import Image from "./images/2634805.jpg";
 
 function HeroSection() {
   return (
-    <section class="bg-[#E7ECFF]">
+    <section className="bg-gradient-to-b from-[#E7ECFF] via-[#E7ECFF] to-white">
       <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div class="mr-auto place-self-center lg:col-span-7">
-          <p class="max-w-2xl text-gray-400 mb-4 text-[20px] font-thin tracking-tight leading-none md:text-[25px] xl:text-[30px] ">
+          <p class="max-w-2xl text-gray-400 mb-4 text-[20px] font-light tracking-tight leading-none md:text-[25px] xl:text-[30px] ">
             Welcome
           </p>
           <h1 class="max-w-2xl text-[#091133] mb-4 text-4xl xl:pb-[22px] font-medium tracking-tight leading-[66px] xl:leading-[66px] md:text-5xl xl:text-6xl ">
-            Sound Based Emotion Classification System
+          Emotion Classification System
           </h1>
           <a
             href="#Predict"
