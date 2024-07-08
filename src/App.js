@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import AudioPlayer from "./audioplayer";
 import Header from "./header";
@@ -8,30 +8,30 @@ import Architecture from "./Architecture";
 import Team from "./Team";
 import Data from "./data";
 import Footer from "./footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Element } from "react-scroll";
 
 function App() {
   return (
     <div className="bg-slate-50">
       <Header />
-      <div id="Home">
+      <Element name="Home" className="element">
         <HeroSection />
-      </div>
-      <div id="AboutMe">
+      </Element>
+      <Element name="AboutMe" className="element">
         <AboutMe />
-      </div>
-      <div id="Architecture">
+      </Element>
+      <Element name="Architecture" className="element">
         <Architecture />
-      </div>
-      <div id="Team">
+      </Element>
+      <Element name="Team" className="element">
         <Team />
-      </div>
-      <div id="Data">
+      </Element>
+      <Element name="Data" className="element">
         <Data />
-      </div>
-      <div id="Predict">
+      </Element>
+      <Element name="Predict" className="element">
         <AudioPlayer />
-      </div>
+      </Element>
       <Footer />
     </div>
   );

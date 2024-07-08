@@ -15,6 +15,10 @@
   animation: rainbow 3s ease infinite;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @keyframes rainbow {
   0% {
       background-position: 0% 50%;
