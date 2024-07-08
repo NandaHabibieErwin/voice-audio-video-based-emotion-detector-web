@@ -30,9 +30,8 @@ function Architecture() {
         <div className="bg-white p-8 rounded-lg shadow-lg mb-12 transition transform hover:-translate-y-2 hover:shadow-2xl">
           <div className="flex items-center mb-6">
             <img src={audioProcessingIcon} alt="Audio Processing Icon" className="h-12 w-12 mr-4" />
-            <h2 className="text-4xl font-semibold text-gray-900">How it Works</h2>
-          </div>
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">Audio Processing</h3>
+            <h2 className="text-4xl font-semibold text-gray-900">Audio Prediction</h2>
+          </div>        
           <p className="text-gray-700 mb-4">
             When a user uploads an audio file, the system initiates by sending the file to a Python backend for processing. If the user opts to record audio directly within the application, the system utilizes the MediaRecorder API to capture the audio input. The recorded audio is stored in chunks, which are then converted to MP3 format using the Mp3Encoder from the lamejs library. This conversion ensures that the audio is in a suitable format for further processing.
           </p>
@@ -50,7 +49,7 @@ function Architecture() {
         <div className="bg-white p-8 rounded-lg shadow-lg mb-12 transition transform hover:-translate-y-2 hover:shadow-2xl">
           <div className="flex items-center mb-6">
             <img src={imageProcessingIcon} alt="Image Processing Icon" className="h-12 w-12 mr-4" />
-            <h3 className="text-4xl font-semibold text-gray-900">Image Processing</h3>
+            <h3 className="text-4xl font-semibold text-gray-900">Image Prediction</h3>
           </div>
           <p className="text-gray-700 mb-4">
             The image emotion prediction model utilizes a Convolutional Neural Network (CNN) to analyze the visual content of an image. Initially, the image is passed through the CNN, which extracts relevant features. Simultaneously, facial landmarks are identified and extracted from the image. These two sets of information—CNN output and landmarks—are then concatenated and fed into a series of dense (fully connected) layers. This combined input enables the model to make a precise emotion prediction by leveraging both the raw pixel data and the geometric structure of the face.
@@ -60,7 +59,7 @@ function Architecture() {
         <div className="bg-white p-8 rounded-lg shadow-lg mb-12 transition transform hover:-translate-y-2 hover:shadow-2xl">
           <div className="flex items-center mb-6">
             <img src={videoProcessingIcon} alt="Video Processing Icon" className="h-12 w-12 mr-4" />
-            <h3 className="text-4xl font-semibold text-gray-900">Video Processing</h3>
+            <h3 className="text-4xl font-semibold text-gray-900">Video Prediction</h3>
           </div>
           <p className="text-gray-700 mb-4">
             The combined emotion prediction model for video data operates through a multi-step process that integrates both visual and audio information. Here’s a breakdown of the process:

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
-import { Mp3Encoder } from "lamejs"; // Import Mp3Encoder from lamejs
+import { Mp3Encoder } from "lamejs";
+import FillBar from "./fillbar"; // Import the FillBar component
 
 function AudioPlayer() {
   const [file, setFile] = useState(null);
@@ -11,7 +12,7 @@ function AudioPlayer() {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [recordedChunks, setRecordedChunks] = useState([]);
-  const [activeTab, setActiveTab] = useState("audio"); // New state for active tab
+  const [activeTab, setActiveTab] = useState("audio");
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
@@ -104,7 +105,9 @@ function AudioPlayer() {
         const buffer = new Int8Array(arrayBuffer);
         const mp3Data = convertToMp3(buffer);
         const mp3Blob = new Blob(mp3Data, { type: "audio/mp3" });
-        const recordedFile = new File([mp3Blob], "recording.mp3", { type: "audio/mp3" });
+        const recordedFile = new File([mp3Blob], "recording.mp3", {
+          type: "audio/mp3",
+        });
         setFile(recordedFile);
         setFileURL(URL.createObjectURL(recordedFile));
         setRecordedChunks([]);
@@ -144,11 +147,16 @@ function AudioPlayer() {
   };
 
   const emotionExplanations = {
-    "Sad/Fear": "Feeling sad or fearful is natural. Take time to understand your feelings, seek comfort from loved ones, and engage in activities that bring you peace.",
-    Neutral: "A neutral state indicates a balanced emotion. It's a good time to focus on routine tasks and maintain your equilibrium.",
-    Happy: "Happiness is a positive emotion. Share your joy with others, savor the moment, and engage in activities that you love.",
-    Angry: "Anger can be intense. Try to understand the source of your anger, take deep breaths, and consider constructive ways to address the cause.",
-    "Surprise/Disgust": "Surprise can be exciting or unsettling, and disgust can be a strong reaction. Reflect on the cause and respond accordingly, seeking clarity or distance if needed.",
+    "Sad/Fear":
+      "Feeling sad or fearful is natural. Take time to understand your feelings, seek comfort from loved ones, and engage in activities that bring you peace.",
+    Neutral:
+      "A neutral state indicates a balanced emotion. It's a good time to focus on routine tasks and maintain your equilibrium.",
+    Happy:
+      "Happiness is a positive emotion. Share your joy with others, savor the moment, and engage in activities that you love.",
+    Angry:
+      "Anger can be intense. Try to understand the source of your anger, take deep breaths, and consider constructive ways to address the cause.",
+    "Surprise/Disgust":
+      "Surprise can be exciting or unsettling, and disgust can be a strong reaction. Reflect on the cause and respond accordingly, seeking clarity or distance if needed.",
   };
 
   const handleTabChange = (tab) => {
@@ -162,15 +170,21 @@ function AudioPlayer() {
   return (
     <div className="min-h-screen bg-gradient-to-r mt-5 from-[#D0D7FF] via-[#E7ECFF] to-[#E7ECFF] flex flex-col items-center justify-center p-4">
       <div className="bg-[#F7F9FF] p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-[#505DFF]">Emotion Prediction</h1>
-        <p className="text-center text-gray-700 mb-4 dark:text-gray-400">Upload a file and start predicting</p>
+        <h1 className="text-2xl font-bold text-center text-[#505DFF]">
+          Emotion Prediction
+        </h1>
+        <p className="text-center text-gray-700 mb-4 dark:text-gray-400">
+          Upload a file and start predicting
+        </p>
 
         {/* Tabs */}
         <div className="flex justify-center mb-4">
           <button
             onClick={() => handleTabChange("image")}
             className={`px-4 py-2 mx-1 rounded-t-lg ${
-              activeTab === "image" ? "bg-[#D0D7FF] text-[#505DFF]" : "bg-[#E7ECFF] text-gray-700"
+              activeTab === "image"
+                ? "bg-[#D0D7FF] text-[#505DFF]"
+                : "bg-[#E7ECFF] text-gray-700"
             } ${isLoading ? "cursor-not-allowed" : ""}`}
             disabled={isLoading}
           >
@@ -179,7 +193,9 @@ function AudioPlayer() {
           <button
             onClick={() => handleTabChange("audio")}
             className={`px-4 py-2 mx-1 rounded-t-lg ${
-              activeTab === "audio" ? "bg-[#D0D7FF] text-[#505DFF]" : "bg-[#E7ECFF] text-gray-700"
+              activeTab === "audio"
+                ? "bg-[#D0D7FF] text-[#505DFF]"
+                : "bg-[#E7ECFF] text-gray-700"
             } ${isLoading ? "cursor-not-allowed" : ""}`}
             disabled={isLoading}
           >
@@ -188,7 +204,9 @@ function AudioPlayer() {
           <button
             onClick={() => handleTabChange("video")}
             className={`px-4 py-2 mx-1 rounded-t-lg ${
-              activeTab === "video" ? "bg-[#D0D7FF] text-[#505DFF]" : "bg-[#E7ECFF] text-gray-700"
+              activeTab === "video"
+                ? "bg-[#D0D7FF] text-[#505DFF]"
+                : "bg-[#E7ECFF] text-gray-700"
             } ${isLoading ? "cursor-not-allowed" : ""}`}
             disabled={isLoading}
           >
@@ -200,14 +218,22 @@ function AudioPlayer() {
           <div className="flex items-center mt-4">
             <input
               type="file"
-              accept={activeTab === "audio" ? "audio/*" : activeTab === "video" ? "video/*" : "image/*"}
+              accept={
+                activeTab === "audio"
+                  ? "audio/*"
+                  : activeTab === "video"
+                  ? "video/*"
+                  : "image/*"
+              }
               onChange={handleFileChange}
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#D0D7FF] file:text-[#505DFF] hover:file:bg-[#E7ECFF]"
+              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:cursor-pointer file:border-0 file:text-sm file:font-semibold file:bg-[#D0D7FF] file:text-[#505DFF] hover:file:bg-[#E7ECFF]"
               disabled={isLoading}
             />
             {activeTab === "audio" && (
               <button
-                onClick={isRecording ? handleStopRecording : handleStartRecording}
+                onClick={
+                  isRecording ? handleStopRecording : handleStartRecording
+                }
                 className="ml-2 p-2 rounded-full bg-[#505DFF] text-white hover:bg-[#7079FF] transition duration-300 ease-in-out"
               >
                 {isRecording ? <FaMicrophoneSlash /> : <FaMicrophone />}
@@ -233,7 +259,7 @@ function AudioPlayer() {
           </div>
           <button
             onClick={handleUpload}
-            className={`mt-4 w-full py-2 rounded-lg border-b-4 transition duration-300 ease-in-out transform hover:scale-105 ${
+            className={`mt-4 w-full py-2 rounded-lg border-b-4 transition cursor-pointer duration-300 ease-in-out transform hover:scale-105 ${
               file
                 ? "bg-[#505DFF] text-white border-[#404BFF] hover:bg-[#7079FF]"
                 : "bg-gray-400 text-gray-800 border-gray-600 cursor-not-allowed"
@@ -246,7 +272,7 @@ function AudioPlayer() {
 
         {isLoading && (
           <div className="mt-4 text-center">
-            <div className="loader border-t-4 border-[#505DFF] rounded-full w-12 h-12 mx-auto mb-4"></div>
+            <div className="loader border-t-4 rainbow rounded-full w-12 h-12 mx-auto mb-4"></div>
             <p className="rainbow">Predicting...</p>
           </div>
         )}
@@ -260,22 +286,27 @@ function AudioPlayer() {
                 </span>
               </p>
               <p className="text-lg text-[#505DFF] mt-2">
-                <strong>Confidence: </strong> <span className="ml-2">{result.confidence}</span>
+                <strong>Confidence: </strong>{" "}
+                <span className="ml-2">{result.confidence}</span>
               </p>
               <button
                 onClick={() => setShowDetails(!showDetails)}
                 className="mt-4 px-4 py-2 rounded bg-[#505DFF] text-white hover:bg-[#404BFF] transition duration-300 ease-in-out"
               >
-                {showDetails ? "Hide Classification" : "Show Classification"}
+                {showDetails ? "Hide Probability" : "Show Probability"}
               </button>
             </div>
             {showDetails && (
-              <pre className="mt-4 p-2 bg-[#E7ECFF] rounded w-full overflow-auto">
-                {result.softmax_probs_string}
-              </pre>
+              <div className="mt-4 p-2 bg-[#E7ECFF] rounded w-full overflow-auto">
+                {result.softmax_probs_string.map((prob, index) => (
+                  <FillBar key={index} label={prob.label} probability={prob.probability} />
+                ))}
+              </div>
             )}
             <div className="mt-4">
-              <p className="text-md text-[#404BFF]">{emotionExplanations[result.emotion]}</p>
+              <p className="text-md text-[#404BFF]">
+                {emotionExplanations[result.emotion]}
+              </p>
             </div>
           </div>
         )}

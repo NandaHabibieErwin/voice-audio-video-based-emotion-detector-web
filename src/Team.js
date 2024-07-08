@@ -5,7 +5,22 @@ import MMZ from "./images/MMZ.jpeg";
 import DNS from "./images/DNS.jpg";
 import MDF from "./images/MDF.jpg";
 
-const TeamMember = ({ imgSrc, name, role, description }) => (
+const FacultyMember = ({ imgSrc, name, role, description }) => (
+  <div className="relative overflow-hidden transition duration-300 bg-gradient-to-r from-green-50 to-teal-50 transform rounded-lg shadow-lg hover:-translate-y-2 hover:shadow-2xl">
+    <img
+      className="object-cover w-full h-56 md:h-64 xl:h-80"
+      src={imgSrc}
+      alt={name}
+    />
+    <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+      <p className="mb-1 text-lg font-bold text-gray-100">{name}</p>
+      <p className="mb-4 text-xs font-medium text-gray-100">{role}</p>
+      <p className="mb-4 text-xs tracking-wide text-gray-400">{description}</p>
+    </div>
+  </div>
+);
+
+const ProjectTeamMember = ({ imgSrc, name, role, description }) => (
   <div className="relative overflow-hidden transition duration-300 bg-gradient-to-r from-green-50 to-teal-50 transform rounded-lg shadow-lg hover:-translate-y-2 hover:shadow-2xl">
     <img
       className="object-cover w-full h-56 md:h-64 xl:h-80"
@@ -21,7 +36,7 @@ const TeamMember = ({ imgSrc, name, role, description }) => (
 );
 
 const Teams = () => {
-  const teamMembers = [
+  const facultyMembers = [
     {
       imgSrc: MMZ,
       name: "Muhammad Mahrus Zain, S.S.T., M.T.I.",
@@ -37,6 +52,9 @@ const Teams = () => {
       name: "Mardhiah Fadli, S.T., M.T.",
       role: "Dosen Manajemen Project",
     },
+  ];
+
+  const projectTeam = [
     {
       imgSrc: blackjack,
       name: "Nanda Habibie Erwin",
@@ -46,10 +64,12 @@ const Teams = () => {
       imgSrc: deno,
       name: "M Denoia Zulfa",
       role: "Assistant Manager, UI/UX Designer",
-    }
+    },
   ];
 
   return (
+    <div>
+    <section>
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <h2 className="max-w-lg mb-6 text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
@@ -76,17 +96,19 @@ const Teams = () => {
                 height="24"
               />
             </svg>
-            <span className="relative">Welcome</span>
+            
           </span>{" "}
-          to our talented team of professionals
+          Our Team
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          This project is made possible thanks to the help of these professionals
+          This project is made possible thanks to the help of these
+          professionals
         </p>
       </div>
+      <h3></h3>
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {teamMembers.slice(0, 3).map((member, index) => (
-          <TeamMember
+        {facultyMembers.map((member, index) => (
+          <FacultyMember
             key={index}
             imgSrc={member.imgSrc}
             name={member.name}
@@ -96,8 +118,8 @@ const Teams = () => {
         ))}
       </div>
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-2 justify-center mt-10">
-        {teamMembers.slice(3).map((member, index) => (
-          <TeamMember
+        {projectTeam.map((member, index) => (
+          <ProjectTeamMember
             key={index}
             imgSrc={member.imgSrc}
             name={member.name}
@@ -106,6 +128,9 @@ const Teams = () => {
           />
         ))}
       </div>
+    </div>
+    </section>
+
     </div>
   );
 };

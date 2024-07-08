@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Events, animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import { Link, Events, scrollSpy } from "react-scroll";
 import Logo from './images/logo.png';
 import './App.css'; // Ensure this file includes your CSS
 
@@ -31,6 +31,8 @@ const Header = () => {
     };
   }, []);
 
+  const headerHeight = 80; // Adjust this value based on your header height
+
   return (
     <header>
       <nav
@@ -43,7 +45,7 @@ const Header = () => {
             <img src={Logo} className="self-center h-12" alt="Logo" />
           </a>
           <div className="flex items-center lg:order-2">
-            <Link to="Predict" smooth={true} duration={500} className="cursor-pointer text-white bg-[#505DFF] hover:bg-[#313fff] focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
+            <Link to="Predict" smooth={true} duration={500} offset={-headerHeight} className="cursor-pointer text-white bg-[#505DFF] hover:bg-[#313fff] focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
               Start Predicting
             </Link>
             <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
@@ -63,6 +65,7 @@ const Header = () => {
                   to="Home"
                   smooth={true}
                   duration={500}
+                  offset={-headerHeight}
                   className={`cursor-pointer block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 ${
                     isScrolled ? (activeSection === "Home" ? "text-blue-500" : "text-gray-400 lg:hover:text-primary-700") : "text-white"
                   }`}
@@ -77,6 +80,7 @@ const Header = () => {
                   to="AboutMe"
                   smooth={true}
                   duration={500}
+                  offset={-headerHeight}
                   className={`cursor-pointer block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 ${
                     isScrolled ? (activeSection === "AboutMe" ? "text-blue-500" : "text-gray-400 lg:hover:text-primary-700") : "text-white"
                   }`}
@@ -91,13 +95,14 @@ const Header = () => {
                   to="Architecture"
                   smooth={true}
                   duration={500}
+                  offset={-headerHeight}
                   className={`cursor-pointer block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 ${
                     isScrolled ? (activeSection === "Architecture" ? "text-blue-500" : "text-gray-400 lg:hover:text-primary-700") : "text-white"
                   }`}
                   spy={true}
                   onSetActive={() => setActiveSection("Architecture")}
                 >
-                  Architecture
+                  System Overview
                 </Link>
               </li>
               <li>
@@ -105,6 +110,7 @@ const Header = () => {
                   to="Team"
                   smooth={true}
                   duration={500}
+                  offset={-headerHeight}
                   className={`cursor-pointer block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 ${
                     isScrolled ? (activeSection === "Team" ? "text-blue-500" : "text-gray-400 lg:hover:text-primary-700") : "text-white"
                   }`}
@@ -119,6 +125,7 @@ const Header = () => {
                   to="Data"
                   smooth={true}
                   duration={500}
+                  offset={-headerHeight}
                   className={`cursor-pointer block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 ${
                     isScrolled ? (activeSection === "Data" ? "text-blue-500" : "text-gray-400 lg:hover:text-primary-700") : "text-white"
                   }`}
